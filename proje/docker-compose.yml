@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  php:
+    image: php:7.4-fpm
+    container_name: php74_fpm
+    volumes:
+      - ./src:/var/www/html
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    restart: always
