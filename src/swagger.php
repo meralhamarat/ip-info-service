@@ -1,5 +1,5 @@
 <?php
-/*
+/**
   apt update
   apt install -y nodejs npm
   apt install -y git
@@ -41,7 +41,7 @@ if ($requestUri === '/hello') {
 
 if ($requestUri === '/docs') {
     // Swagger dokümantasyonu üret
-    $openapi = Generator::scan([__DIR__ . '/swagger.php']);
+    $openapi = Generator::scan([__FILE__]);
     header('Content-Type: application/json');
     echo $openapi->toJson();
     exit;
