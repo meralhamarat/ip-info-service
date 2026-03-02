@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   php:
-    image: php:7.4-fpm
-    container_name: php74_fpm
+    image: php:8.2-fpm
+    container_name: php82_fpm
     volumes:
       - ./src:/var/www/html
     restart: always
