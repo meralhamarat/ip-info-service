@@ -9,7 +9,7 @@ use OpenApi\Attributes as OA;
 #[OA\Info(title: "My Simple API", version: "1.0.0")]
 class OpenApiConfig {}
 
-// Basit bir endpoint tanımı
+#[OA\PathItem(path: "/hello")]
 #[OA\Get(
     path: "/hello",
     operationId: "helloWorld",
@@ -22,8 +22,7 @@ function helloWorld() {
     echo json_encode(["message" => "Hello World"]);
 }
 
-// Router mantığı
-$requestUri = $_SERVER['REQUEST_URI'];
+$requestUri = strtok($_SERVER['REQUEST_URI'], '?');
 
 if ($requestUri === '/hello') {
     helloWorld();
@@ -31,13 +30,11 @@ if ($requestUri === '/hello') {
 }
 
 if ($requestUri === '/docs') {
-    // Swagger dokümantasyonu üret
     $openapi = Generator::scan([__FILE__]);
     header('Content-Type: application/json');
     echo $openapi->toJson();
     exit;
 }
 
-// Varsayılan cevap
 header('Content-Type: text/plain');
 echo "Available endpoints: /hello, /docs";
