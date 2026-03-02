@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
+
 require 'vendor/autoload.php';
 
 use OpenApi\Generator;
