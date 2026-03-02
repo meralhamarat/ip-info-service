@@ -1,7 +1,7 @@
 <?php
 include("Ip.php");
 
-if($_GET['ip']){
+if(isset($_GET['ip']) && $_GET['ip']){
     $ip = $_GET['ip'];
 } else{
     $ip = $_SERVER['REMOTE_ADDR'];
