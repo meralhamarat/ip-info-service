@@ -1,4 +1,13 @@
 <?php
+/*
+  apt update
+  apt install -y nodejs npm
+  apt install -y git
+  npm install swagger-ui-dist
+  mkdir swagger-ui
+  cp -r node_modules/swagger-ui-dist/* swagger-ui/
+  swagger-ui dizininde petstore.swagger.io ara ve onu http://localhost/docsiledeğiştir
+*/
 error_reporting(E_ERROR | E_PARSE);
 
 require 'vendor/autoload.php';
