@@ -30,7 +30,7 @@ if ($requestUri === '/hello') {
 
 if ($requestUri === '/docs') {
     // Swagger dokümantasyonu üret
-    $openapi = Generator::scan([__DIR__]);
+    $openapi = Generator::scan([__DIR__ . '/swagger.php']);
     header('Content-Type: application/json');
     echo $openapi->toJson();
     exit;
