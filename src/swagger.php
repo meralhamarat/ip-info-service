@@ -5,8 +5,15 @@ require 'vendor/autoload.php';
 
 use OpenApi\Generator;
 use OpenApi\Attributes as OA;
+use OpenApi\scan;
 
 #[OA\Info(title: "My Simple API", version: "1.0.0")]
+#[OA\SecurityScheme(
+    securityScheme: "bearerAuth",
+    type: "http",
+    scheme: "bearer",
+    bearerFormat: "JWT"
+)]
 class OpenApiConfig {}
 
 class HelloController {
@@ -35,7 +42,8 @@ if ($requestUri === '/hello') {
 }
 
 if ($requestUri === '/docs') {
-    $openapi = Generator::scan([__FILE__]);
+    $generator = new Generator();
+    $openapi = $generator->generate([__FILE__]);
     header('Content-Type: application/json');
     echo $openapi->toJson();
     exit;
